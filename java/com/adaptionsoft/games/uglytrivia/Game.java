@@ -8,7 +8,8 @@ public class Game {
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
-    
+    int[] highscores= new int[6];
+
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
     LinkedList sportsQuestions = new LinkedList();
@@ -29,7 +30,12 @@ public class Game {
 	public String createRockQuestion(int index){
 		return "Rock Question " + index;
 	}
-	
+
+	/**
+	 * Return true if the game is playable.
+	 * 
+	 * @return true if the game is playable.
+	 */
 	public boolean isPlayable() {
 		return (howManyPlayers() >= 2);
 	}
@@ -45,6 +51,11 @@ public class Game {
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + players.size());
 		return true;
+	}
+	
+	public boolean remove(String playerName) {
+	  players.remove(howManyPlayers());
+	  return true;
 	}
 	
 	public int howManyPlayers() {
@@ -98,7 +109,11 @@ public class Game {
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
-	
+  public static void main(String[] args) {
+    System.out.println("Hello World!"); // Display the string.
+  }
+
+	// randomly return a category
 	private String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
@@ -162,7 +177,23 @@ public class Game {
 		return true;
 	}
 
-
+	public static class SimpleSingleton {
+    private static SimpleSingleton singleInstance =  new SimpleSingleton();
+ 
+    //Marking default constructor private
+    //to avoid direct instantiation.
+    private SimpleSingleton() {
+    }
+ 
+    //Get instance for class SimpleSingleton
+    public static SimpleSingleton getInstance() {
+ 
+        return singleInstance;
+  }
+}
+	/**
+	 * Tells if the last player won.
+	 */
 	private boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
 	}
