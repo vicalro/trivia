@@ -102,10 +102,6 @@ public class Game {
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
-  public static void main(String[] args) {
-    System.out.println("Hello World!"); // Display the string.
-  }
-
 	// randomly return a category
 	private String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
@@ -129,9 +125,7 @@ public class Game {
 				if (currentPlayer == players.size()) currentPlayer = 0;
 				return true;
 			}
-			
 		} else {
-		
 			return correctAnswerWhenOutOfPenaltyBox();
 		}
 	}
