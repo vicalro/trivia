@@ -13,11 +13,15 @@ public class GameRunnerTest {
 		PrintStream stdout = System.out;
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(baos));
+		GameRunner.main(null);
 		
+		ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(baos2));
 		GameRunner.main(null);
 		
 		System.setOut(stdout);
-		System.out.print(baos.toString());
+		//System.out.print(baos.toString());
+		assertEquals(baos.toString(), baos2.toString());
 		
 	}
 
