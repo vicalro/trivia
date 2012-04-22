@@ -41,5 +41,41 @@ public class GameRunnerTest {
 		aGame.add("Maria");
 		assertTrue(aGame.isPlayable());
 	}
+	
+	@Test
+	public void whiteBoxTestMariaAlwaysWinsJohnDoesnt(){
+		Game aGame = new Game();
+		aGame.add("John");
+		aGame.add("Maria");
+		aGame.roll(2);
+		assertTrue(aGame.wrongAnswer());
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		
+		aGame.roll(1);
+		assertTrue(aGame.wrongAnswer());
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		
+		aGame.roll(2);
+		assertTrue(aGame.wrongAnswer());
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		
+		aGame.roll(2);
+		assertTrue(aGame.wrongAnswer());
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		
+		aGame.roll(2);
+		assertTrue(aGame.wasCorrectlyAnswered());
+		aGame.roll(2);
+		assertFalse(aGame.wasCorrectlyAnswered());
+	}
 
 }

@@ -32,8 +32,6 @@ public class Game {
 	}
 
 	/**
-	 * Return true if the game is playable.
-	 * 
 	 * @return true if the game is playable.
 	 */
 	public boolean isPlayable() {
