@@ -14,7 +14,7 @@ public class GameRunner {
 		//Random rand = new Random();
 		RandomUnderControl rand = new RandomUnderControl();
 		
-		Game aGame = new Game();
+		Game aGame = new Game(6, 6, 12, 2, 50);
 		
 		aGame.add("Chet");
 		aGame.add("Pat");

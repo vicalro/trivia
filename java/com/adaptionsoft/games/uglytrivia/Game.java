@@ -6,10 +6,11 @@ import java.util.LinkedList;
 import com.adaptionsoft.games.trivia.runner.Players;
 
 public class Game {
-	int coinsToWin = 6;
-	int maxPlaces = 12;
-	int maxPlayers = 6;
-    Players players = new Players(maxPlayers);
+	private int coinsToWin;// = 6;
+	private int maxPlaces;// = 12;
+	private int maxPlayers;// = 6;
+	private int minPlayers;// =2;
+	private Players players;// = new Players(maxPlayers);
 
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -18,8 +19,14 @@ public class Game {
     
     boolean isGettingOutOfPenaltyBox;
     
-    public Game(){
-    	for (int i = 0; i < 50; i++) {
+    public Game(int coinsToWin, int maxPlayers, int maxPlaces, int minPlayers, int numQuestions){
+    	this.coinsToWin = coinsToWin;
+    	this.maxPlayers = maxPlayers;
+    	this.maxPlaces = maxPlaces;
+    	this.minPlayers = minPlayers;
+    	this.players = new Players(maxPlayers);
+    	
+    	for (int i = 0; i < numQuestions; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
 			sportsQuestions.addLast(("Sports Question " + i));
@@ -31,7 +38,7 @@ public class Game {
 	 * @return true if the game is playable.
 	 */
 	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+		return (howManyPlayers() >= minPlayers);
 	}
 
 	public boolean add(String playerName) {

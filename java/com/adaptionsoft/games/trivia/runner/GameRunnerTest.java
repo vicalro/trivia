@@ -29,14 +29,14 @@ public class GameRunnerTest {
 	
 	@Test
 	public void  testForMethodIsPlayableOnePlayer(){
-		Game aGame = new Game();
+		Game aGame = new Game(6, 6, 12, 2, 50);
 		aGame.add("John");
 		assertFalse(aGame.isPlayable());
 	}
 	
 	@Test
 	public void  testForMethodIsPlayableTwoPlayers(){
-		Game aGame = new Game();
+		Game aGame = new Game(6, 6, 12, 2, 50);
 		aGame.add("John");
 		aGame.add("Maria");
 		assertTrue(aGame.isPlayable());
@@ -44,7 +44,7 @@ public class GameRunnerTest {
 	
 	@Test
 	public void whiteBoxTestMariaAlwaysWinsJohnDoesnt(){
-		Game aGame = new Game();
+		Game aGame = new Game(6, 6, 12, 2, 50);
 		aGame.add("John");
 		aGame.add("Maria");
 		aGame.roll(2);
