@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Players {
 	
-	int numPlayers, currentPlayer, limitPlayers;
+	int numPlayers, currentPlayer, maxPlayers;
 	ArrayList names;
 	int[] places, purses, highscores;
 	boolean[] inPenaltyBox;
@@ -17,7 +17,7 @@ public class Players {
 	    highscores= new int[maxPlayers];
 	    numPlayers = 0;
 	    currentPlayer = 0;
-	    limitPlayers = maxPlayers;
+	    this.maxPlayers = maxPlayers;
 	}
 	
 	public int howManyPlayers(){
@@ -25,7 +25,7 @@ public class Players {
 	}
 	
 	public boolean addPlayer(String playerName){
-		if(numPlayers<limitPlayers){
+		if(numPlayers<maxPlayers){
 			names.add(playerName);
 			places[numPlayers] = 0;
 			purses[numPlayers] = 0;
@@ -34,15 +34,14 @@ public class Players {
 			return true;
 		}
 		else{
-			System.out.println(playerName + "not added. Game full");
+			System.out.println(playerName + " not added. Game full");
 			return false;
 		}
 	}
 	
-	public int nextPlayer(){
+	public void nextPlayer(){
 		currentPlayer++;
-		if (currentPlayer == numPlayers) currentPlayer = 0;
-		return 0;
+		if (currentPlayer >= numPlayers) currentPlayer = 0;
 	}
 	
 	public int currentPlayer(){
