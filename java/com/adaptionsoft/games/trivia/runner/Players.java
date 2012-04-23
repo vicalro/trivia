@@ -58,8 +58,8 @@ public class Players {
 	
 	public void setPlace (int roll, int maxPlaces){
 		places[currentPlayer]+=roll;
-		if (places[currentPlayer]>maxPlaces)
-			places[currentPlayer]=-maxPlaces;
+		if (places[currentPlayer]>=maxPlaces)
+			places[currentPlayer]-=maxPlaces;
 	}
 	
 	public int getPurse (){
