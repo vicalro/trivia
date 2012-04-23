@@ -6,11 +6,10 @@ import java.util.LinkedList;
 import com.adaptionsoft.games.trivia.runner.Players;
 
 public class Game {
-	private int coinsToWin;// = 6;
-	private int maxPlaces;// = 12;
-	private int maxPlayers;// = 6;
-	private int minPlayers;// =2;
-	private Players players;// = new Players(maxPlayers);
+	private int coinsToWin;
+	private int maxPlaces;
+	private int minPlayers;
+	private Players players;
 
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -21,7 +20,6 @@ public class Game {
     
     public Game(int coinsToWin, int maxPlayers, int maxPlaces, int minPlayers, int numQuestions){
     	this.coinsToWin = coinsToWin;
-    	this.maxPlayers = maxPlayers;
     	this.maxPlaces = maxPlaces;
     	this.minPlayers = minPlayers;
     	this.players = new Players(maxPlayers);
