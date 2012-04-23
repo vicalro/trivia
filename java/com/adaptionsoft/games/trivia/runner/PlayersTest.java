@@ -81,5 +81,11 @@ public class PlayersTest {
 		assertTrue(players.stillNotWinner(4));
 		assertFalse(players.stillNotWinner(2));
 	}
+	
+	@Test
+	public void testRemovePlayer(){
+		players.removePlayer();
+		assertEquals(maxPlayers-1, players.howManyPlayers());
+	}
 
 }

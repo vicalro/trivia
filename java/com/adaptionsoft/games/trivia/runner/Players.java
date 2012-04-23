@@ -81,5 +81,9 @@ public class Players {
 	public boolean stillNotWinner(int coinsToWin){
 		return (purses[currentPlayer]<coinsToWin);
 	}
+	
+	public void removePlayer(){
+		
+	}
 
 }
