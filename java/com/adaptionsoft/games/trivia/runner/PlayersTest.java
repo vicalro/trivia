@@ -84,8 +84,54 @@ public class PlayersTest {
 	
 	@Test
 	public void testRemovePlayer(){
+		players.getsCoin();
+		players.setPlace(1, 8);
+		players.nextPlayer();
+		players.getsCoin();
+		players.getsCoin();
+		players.setPlace(2, 8);
+		players.nextPlayer();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.setPlace(3, 8);
+		players.nextPlayer();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.setPlace(4, 8);
+		players.nextPlayer();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.getsCoin();
+		players.setPlace(5, 8);
+		players.nextPlayer();
 		players.removePlayer();
 		assertEquals(maxPlayers-1, players.howManyPlayers());
+		assertEquals(2, players.getPurse());
+		assertEquals(2,players.getPlace());
+		assertEquals("Andres", players.currentPlayerName());
+	}
+	
+	@Test
+	public void testSixesInARow(){
+		players.setPlace(6, 10);
+		assertEquals(1,players.howManySixes());
+		players.setPlace(6, 10);
+		assertEquals(2,players.howManySixes());
+		
+		players.setPlace(3, 10);
+		assertEquals(0,players.howManySixes());
+		
+		players.setPlace(6, 10);
+		assertEquals(1,players.howManySixes());
+		players.setPlace(6, 10);
+		assertEquals(2,players.howManySixes());
+		players.setPlace(6, 10);
+		assertEquals(3,players.howManySixes());
 	}
 
 }

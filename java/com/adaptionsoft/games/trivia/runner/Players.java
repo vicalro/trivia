@@ -82,8 +82,30 @@ public class Players {
 		return (purses[currentPlayer]<coinsToWin);
 	}
 	
-	public void removePlayer(){
-		
+	public boolean removePlayer(){
+		if(numPlayers>0){
+			names.remove(currentPlayer);
+			places[currentPlayer] = 0;
+			purses[currentPlayer] = 0;
+			inPenaltyBox[currentPlayer] = false;
+			int i;
+			for(i=currentPlayer();i<maxPlayers-1;i++){
+				places[i]=places[i+1];
+				purses[i]=purses[i+1];
+				inPenaltyBox[i]=inPenaltyBox[i+1];
+			}
+			numPlayers--;
+			if (currentPlayer >= numPlayers) currentPlayer = 0;
+			return true;
+		}
+		else{
+			System.out.println(" There are no players to remove");
+			return false;
+		}
+	}
+	
+	public int howManySixes(){
+		return 0;
 	}
 
 }
