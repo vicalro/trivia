@@ -6,7 +6,7 @@ public class Players {
 	
 	int numPlayers, currentPlayer, maxPlayers;
 	ArrayList names;
-	int[] places, purses, highscores;
+	int[] places, purses, highscores, sixes;
 	boolean[] inPenaltyBox;
 	
 	public Players(int maxPlayers){
@@ -15,6 +15,7 @@ public class Players {
 	    purses  = new int[maxPlayers];
 	    inPenaltyBox  = new boolean[maxPlayers];
 	    highscores= new int[maxPlayers];
+	    sixes = new int[maxPlayers];
 	    numPlayers = 0;
 	    currentPlayer = 0;
 	    this.maxPlayers = maxPlayers;
@@ -30,6 +31,7 @@ public class Players {
 			places[numPlayers] = 0;
 			purses[numPlayers] = 0;
 			inPenaltyBox[numPlayers] = false;
+			sixes[numPlayers]=0;
 			numPlayers++;
 			return true;
 		}
@@ -58,8 +60,13 @@ public class Players {
 	
 	public void setPlace (int roll, int maxPlaces){
 		places[currentPlayer]+=roll;
-		if (places[currentPlayer]>=maxPlaces)
+		if (places[currentPlayer]>=maxPlaces){
 			places[currentPlayer]-=maxPlaces;
+		}
+		if(roll==6)
+			sixes[currentPlayer]++;
+		else
+			sixes[currentPlayer]=0;
 	}
 	
 	public int getPurse (){
@@ -85,14 +92,12 @@ public class Players {
 	public boolean removePlayer(){
 		if(numPlayers>0){
 			names.remove(currentPlayer);
-			places[currentPlayer] = 0;
-			purses[currentPlayer] = 0;
-			inPenaltyBox[currentPlayer] = false;
 			int i;
 			for(i=currentPlayer();i<maxPlayers-1;i++){
 				places[i]=places[i+1];
 				purses[i]=purses[i+1];
 				inPenaltyBox[i]=inPenaltyBox[i+1];
+				sixes[i]=sixes[i+1];
 			}
 			numPlayers--;
 			if (currentPlayer >= numPlayers) currentPlayer = 0;
@@ -105,7 +110,7 @@ public class Players {
 	}
 	
 	public int howManySixes(){
-		return 0;
+		return sixes[currentPlayer];
 	}
 
 }

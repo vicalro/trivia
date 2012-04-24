@@ -14,7 +14,7 @@ public class GameRunner {
 		//Random rand = new Random();
 		RandomUnderControl rand = new RandomUnderControl();
 		
-		Game aGame = new Game(6, 6, 12, 2, 50);
+		Game aGame = new Game(6, 6, 12, 2, 50, 3);
 		
 		aGame.add("Chet");
 		aGame.add("Pat");
@@ -30,7 +30,7 @@ public class GameRunner {
 				notAWinner = aGame.wasCorrectlyAnswered();
 			}
 			
-		} while (notAWinner);
+		} while (notAWinner && aGame.isPlayable());
 		
 	}
 }

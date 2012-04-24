@@ -9,6 +9,7 @@ public class Game {
 	private int coinsToWin;
 	private int maxPlaces;
 	private int minPlayers;
+	private int maxSixes;
 	private Players players;
 
     LinkedList popQuestions = new LinkedList();
@@ -18,11 +19,12 @@ public class Game {
     
     boolean isGettingOutOfPenaltyBox;
     
-    public Game(int coinsToWin, int maxPlayers, int maxPlaces, int minPlayers, int numQuestions){
+    public Game(int coinsToWin, int maxPlayers, int maxPlaces, int minPlayers, int numQuestions, int maxSixes){
     	this.coinsToWin = coinsToWin;
     	this.maxPlaces = maxPlaces;
     	this.minPlayers = minPlayers;
     	this.players = new Players(maxPlayers);
+    	this.maxSixes = maxSixes;
     	
     	for (int i = 0; i < numQuestions; i++) {
 			popQuestions.addLast("Pop Question " + i);
@@ -76,7 +78,12 @@ public class Game {
 
 	private void movePlayer(int roll) {
 		players.setPlace(roll, maxPlaces);
-		
+		if(players.howManySixes() == maxSixes)
+		{
+			System.out.println(players.currentPlayerName()
+					+"'s got " + maxSixes +" in a row. He/She is now out of the game.");
+			players.removePlayer();
+		}
 		System.out.println(players.currentPlayerName() 
 				+ "'s new location is " 
 				+ players.getPlace());

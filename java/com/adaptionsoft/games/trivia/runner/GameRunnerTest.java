@@ -29,14 +29,14 @@ public class GameRunnerTest {
 	
 	@Test
 	public void  testForMethodIsPlayableOnePlayer(){
-		Game aGame = new Game(6, 6, 12, 2, 50);
+		Game aGame = new Game(6, 6, 12, 2, 50, 3);
 		aGame.add("John");
 		assertFalse(aGame.isPlayable());
 	}
 	
 	@Test
 	public void  testForMethodIsPlayableTwoPlayers(){
-		Game aGame = new Game(6, 6, 12, 2, 50);
+		Game aGame = new Game(6, 6, 12, 2, 50, 3);
 		aGame.add("John");
 		aGame.add("Maria");
 		assertTrue(aGame.isPlayable());
@@ -44,7 +44,7 @@ public class GameRunnerTest {
 	
 	@Test
 	public void whiteBoxTestMariaAlwaysWinsJohnDoesnt(){
-		Game aGame = new Game(6, 6, 12, 2, 50);
+		Game aGame = new Game(6, 6, 12, 2, 50, 3);
 		aGame.add("John");
 		aGame.add("Maria");
 		aGame.roll(2);
@@ -76,6 +76,27 @@ public class GameRunnerTest {
 		assertTrue(aGame.wasCorrectlyAnswered());
 		aGame.roll(2);
 		assertFalse(aGame.wasCorrectlyAnswered());
+	}
+	
+	@Test
+	public void whiteBoxTestMariaAlwaysGetsSixJohnDoesnt(){
+		Game aGame = new Game(6, 6, 12, 2, 50, 3);
+		aGame.add("John");
+		aGame.add("Maria");
+		aGame.roll(2);
+		aGame.wrongAnswer();
+		aGame.roll(6);
+		aGame.wasCorrectlyAnswered();
+		
+		aGame.roll(1);
+		aGame.wrongAnswer();
+		aGame.roll(6);
+		aGame.wasCorrectlyAnswered();
+		
+		aGame.roll(2);
+		aGame.wasCorrectlyAnswered();
+		aGame.roll(6);
+		assertFalse(aGame.isPlayable());
 	}
 
 }
